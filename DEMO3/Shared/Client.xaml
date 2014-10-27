@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="DEMO3.Client"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SDKTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource x:Name="cvs" />
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="RootGrid" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel  HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <Button x:Name="RunButton" Content="Find devices" Click="RunButton_Click" HorizontalAlignment="Stretch"/>
+                    <!-- Service Selector -->
+                    <Grid x:Name="ServiceSelector" Visibility="Collapsed">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource SampleHeaderTextStyle}" Text="Click a device to select" Margin="0,0,0,10"/>
+                            <ListBox x:Name="ServiceList" Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto" Tapped="ServiceList_Tapped" MaxHeight="125" ItemsSource="{Binding Source={StaticResource cvs}}">
+                                <ListBox.Resources>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Padding" Value="8,10,20,10"/>
+                                    </Style>
+                                </ListBox.Resources>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                    <!-- Chat box -->
+                    <Grid x:Name="StatusBox" Visibility="Collapsed" Margin="0,10,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Button HorizontalAlignment="Stretch" x:Name="DisconnectButton" Content="Disconnect" Click="DisconnectButton_Click"/>
+                            <Button HorizontalAlignment="Stretch" x:Name="OpenDoor" Grid.Column="1" Grid.Row="1" Content="Open Door" Click="SendButton_Click" />
+                            <ListBox x:Name="ConversationList" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="300">
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Status Block for providing messages to the user.  Use the
+             NotifyUser() method to populate the message -->
+            <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Page>

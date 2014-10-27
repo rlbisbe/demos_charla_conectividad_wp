@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="ClientServer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientServer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="canvas" Margin="0,10,0,47" Grid.RowSpan="2">
+            <Rectangle x:Name="AnotherArea"
+                   Width="{Binding ElementName=canvas, Path=ActualWidth}"
+        Height="120"
+            	Fill="Red" />
+
+            <Border Canvas.ZIndex="100" Name="TestRectangle" Background="#FF21218F" ManipulationMode="All">
+                <TextBlock TextWrapping="Wrap" Width="200" TextTrimming="WordEllipsis" Height="244" FontSize="22" Margin="10">En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana.
+                </TextBlock>
+            </Border>
+
+            <Border Canvas.ZIndex="100" Name="TestRectangleImage" Background="#FF8A218F" ManipulationMode="All">
+                <Image Source="/Assets/face.jpeg" Margin="10"></Image>
+            </Border>
+        </Canvas>
+    </Grid>
+</Page>
